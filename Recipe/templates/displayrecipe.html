@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/displayrecipestyles.css') }}">
+</head>
+
+<body>
+    <a href="{{siteurl}}"><button id="linker">Link to Official Site</button></a> <br>
+    <form name="favouriterecipe" action="http://localhost:8082/favourite" method="POST">
+    <input type="submit" name="fave" value="Add to Favourites" id="fave"/>
+
+    <h1> AllRecipes Recipe: {{recipe_title}}</h1>
+    <br>
+    <h4>Rated out of 5: {{rating}}</h4>
+    <br>
+    <img src='{{imageurl}}' alt='{{recipe_title}}' />
+    <br>
+    <h2>Ingredients:</h2>
+    <br>
+    <ul>
+        {% for ingredient in ingredients %}
+        <li>{{ingredient}}</li>
+        {% endfor %}
+    </ul>
+    <br>
+    <h2>Directions</h2>
+    <ol>
+        {% for direction in directions %}
+        <li>{{direction}}</li>
+        {% endfor %}
+    </ol>
+    <br>
+   
+
+   <br>
+   <h3>
+       Related Sites You Might Enjoy:
+   </h3>
+   <table border=2>
+       {% for site in relatedsites %}
+        <tr>
+            <td><a href='{{site}}'>{{site}}</a></td>
+        </tr>
+       {% endfor %}
+   </table>
+</form>
+</body>
+
+</html>
